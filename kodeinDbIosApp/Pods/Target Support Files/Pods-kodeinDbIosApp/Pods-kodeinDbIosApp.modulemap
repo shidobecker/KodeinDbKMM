@@ -1,0 +1,6 @@
+framework module Pods_kodeinDbIosApp {
+  umbrella header "Pods-kodeinDbIosApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
