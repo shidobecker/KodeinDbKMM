@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
 }
+val coroutinesVersion = "1.4.3"
 
 dependencies {
     implementation(project(":shared"))
@@ -13,6 +14,12 @@ dependencies {
     implementation(Libraries.ktxFragment)
     implementation(JetPackLibraries.lifecycleViewModelKtx)
     implementation(JetPackLibraries.lifecycleLivedataKtx)
+    implementation(Libraries.koinAndroid)
+    implementation(Libraries.koinViewModel)
+
+    implementation("androidx.core:core-ktx:1.3.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+
 
 }
 

@@ -4,6 +4,8 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin("plugin.serialization") version "1.4.10"
+
 }
 
 version = "1.0"
@@ -26,10 +28,14 @@ kotlin {
         frameworkName = "shared"
         podfile = project.file("../kodeinDbIosApp/Podfile")
     }
-    
+
+     val coroutinesVersion = "1.4.3"
+
     sourceSets {
         val commonMain by getting{
             dependencies{
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+
                 implementation("org.kodein.db:kodein-db:0.8.1-beta")
                 implementation("org.kodein.db:kodein-db-serializer-kotlinx:0.8.1-beta")
             }

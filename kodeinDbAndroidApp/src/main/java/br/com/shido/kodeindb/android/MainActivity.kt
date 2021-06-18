@@ -1,20 +1,30 @@
 package br.com.shido.kodeindb.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.com.shido.kodeindb.Greeting
 import android.widget.TextView
-
-fun greet(): String {
-    return Greeting().greeting()
-}
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.collect
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
+
+
+    private val viewModel by viewModel<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        lifecycleScope.launchWhenResumed {
+            viewModel.users.collect { list ->
+                list.forEach {
+                    tv.text = tv.text.toString().plus(" ____ ").plus(it.firstName)
+
+                }
+            }
+        }
+
     }
 }

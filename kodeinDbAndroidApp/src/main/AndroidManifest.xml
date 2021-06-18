@@ -3,6 +3,7 @@
     package="br.com.shido.kodeindb.android">
 
     <application
+      android:name=".AppClass"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
